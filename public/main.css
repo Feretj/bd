@@ -1,0 +1,53 @@
+html, body, td, th {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: black;
+}
+body {
+  margin: 30px;
+}
+th {
+  text-align: left;
+  vertical-align: top;
+  font-weight: normal;
+  font-style: italic;
+  white-space: nowrap;
+}
+h1, h2, h3, h4, h5, h6 {
+  border-bottom: 1px solid #DFDFDF;
+  color: #660000;
+  font-weight: normal;
+}
+h1 {
+  font-size: 24px;
+}
+h2 {
+  font-size: 18px;
+  margin-top: 1.5em;
+}
+h3 {
+  font-size: 16px;
+}
+h4 {
+  font-size: 12px;
+}
+h5 {
+  font-size: 12px;
+  font-weight: bold;
+}
+.note {
+  font-size: 9px;
+}
+li {
+  margin: 0.2em;
+}
+table.references td {
+  vertical-align: top;
+}
+.skin-switch {
+  font-size: 9px;
+}
+pre {
+  font-weight: bold;
+  color: #333333;
+}
