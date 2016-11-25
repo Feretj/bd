@@ -5,12 +5,45 @@ if (!getCookie('uid')) {
   setCookie('uid', uid, {expires: 1e10})
 }
 
-var user = '';
+var user = {};
+var users = {};
 
 get('/user', function (data) {
   user = JSON.parse(data);
   document.getElementById('username').innerHTML = user.name;
-});
+  if (user.status == '3') {
+    document.getElementById('buttons').classList.add("hidden");
+    document.getElementById('no').classList.remove("hidden");
+  } else if (user.status != '0') {
+    document.getElementById('buttons').classList.add("hidden");
+    document.getElementById('yes').classList.remove("hidden");
+  }
+  document.querySelectorAll('.option').forEach(function (btn) {
+    btn.onclick = poll;
+  });
+  document.querySelectorAll('.change').forEach(function (btn) {
+    btn.onclick = change;
+  });
+}, {uid: uid});
+
+get('/users', function (data) {
+  users = JSON.parse(data);
+  Object.keys(users).map(function (key) {
+    var html = '<a class="user" href ="' + users[key].vk + '">' + users[key].name + ' ' + users[key].surname + '</a><br />';
+    if (users[key].status == 0) {
+      document.getElementById('col0').innerHTML += html;
+    } else if (users[key].status == 1) {
+      document.getElementById('col1').innerHTML += html;
+    } else if (users[key].status == 2) {
+      document.getElementById('col2').innerHTML += html;
+    } else if (users[key].status == 3) {
+      document.getElementById('col3').innerHTML += html;
+    } else {
+      console.log("Error: bad user:");
+      console.log(users[key]);
+    }
+  });
+}, {uid: uid});
 
 countDown = new NixieDisplay();
 countDown.id = 'countdown';
@@ -24,8 +57,6 @@ countDown.charHeight = 150;
 countDown.extraGapsWidths[3] = 20;
 countDown.extraGapsWidths[5] = 20;
 countDown.charGapWidth = 0;
-document.getElementById(countDown.id).parentNode.style.background = "white";
-document.getElementById(countDown.id).parentNode.style.border = "none";
 countDown.init();
 var bdd = new Date("12/03/2016 17:00");
 startTime();
@@ -102,9 +133,13 @@ function setCookie(name, value, options) {
   document.cookie = updatedCookie;
 }
 
-function get(url, callback) {
+function get(url, callback, data) {
+  var params = '?'
+  if (data) {
+    Object.keys(data).map(function (key) { params += key + '=' + data[key] + '&'; });
+  }
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
+  xhr.open('GET', url + params, true);
   xhr.send();
   xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
@@ -115,4 +150,42 @@ function get(url, callback) {
       delete xhr;
     }
   }
+}
+
+function post(url, callback, data) {
+  var json = JSON.stringify(data);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true)
+  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  xhr.send(json);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4) return;
+    if (xhr.status != 200) {
+      console.log(xhr.status + ': ' + xhr.statusText);
+    } else {
+      callback(xhr.responseText);
+      delete xhr;
+    }
+  }
+}
+
+function poll(event) {
+  post('/poll', function(data) {
+    console.log(data);
+    document.getElementById('buttons').classList.add("hidden");
+    if (event.target.id == 'n') {
+      document.getElementById('no').classList.remove("hidden");
+    } else {
+      document.getElementById('yes').classList.remove("hidden");
+    }
+  }, {uid: uid, status: event.target.id});
+}
+
+function change() {
+  post('/poll', function(data) {
+    console.log(data);
+    document.getElementById('yes').classList.add("hidden");
+    document.getElementById('no').classList.add("hidden");
+    document.getElementById('buttons').classList.remove("hidden");
+  }, {uid: uid, status: 0});
 }

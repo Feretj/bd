@@ -1,53 +1,193 @@
-html, body, td, th {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  color: black;
-}
+@import url(latofonts.css);
+
 body {
-  margin: 30px;
+  background: #ffffff;
+  margin: 0;
 }
-th {
-  text-align: left;
-  vertical-align: top;
-  font-weight: normal;
-  font-style: italic;
-  white-space: nowrap;
+
+#cake {
+  display: block;
+  margin: -10em auto 0 auto;
+  position: relative;
+  bottom: -130px;
 }
-h1, h2, h3, h4, h5, h6 {
-  border-bottom: 1px solid #DFDFDF;
-  color: #660000;
-  font-weight: normal;
+
+/* ============================================== Candle
+*/
+
+.velas {
+  background: #c2e5e9;
+  border-radius: 20px;
+  position: relative;
+  bottom: -300px;
+  margin: 0 auto 0 auto;
+  margin-top: -8.33333333px;
+  width: 10px;
+  height: 70px;
+  transform: translateY(-900px);
+  backface-visibility: hidden;
+  animation: in 500ms 6s ease-out forwards;
 }
-h1 {
-  font-size: 24px;
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
 }
-h2 {
-  font-size: 18px;
-  margin-top: 1.5em;
+.velas:after {
+  top: 25%;
+  left: 0;
 }
-h3 {
-  font-size: 16px;
+.velas:before {
+  top: 45%;
+  left: 0;
 }
+
+/* ============================================== Fire
+*/
+
+.fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  margin-left: -5.2px;
+  width: 14px;
+  height: 36px;
+}
+.fuego:nth-child(1) {
+  animation: fuego 2s 6.5s infinite;
+}
+.fuego:nth-child(2) {
+  animation: fuego 1.5s 6.5s infinite;
+}
+.fuego:nth-child(3) {
+  animation: fuego 1s 6.5s infinite;
+}
+.fuego:nth-child(4) {
+  animation: fuego 0.5s 6.5s infinite;
+}
+.fuego:nth-child(5) {
+  animation: fuego 0.2s 6.5s infinite;
+}
+
+/* ============================================== Animation Fire
+*/
+
+@keyframes fuego {
+  0%, 100% {
+    background: rgba(249, 223, 55, 0.5);
+    box-shadow: 0 0 40px 10px rgba(242, 197, 124, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.15);
+    box-shadow: 0 0 40px 20px rgba(251, 186, 83, 0.2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+
+@keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.text {
+  color: #c87f69;
+  font-family: 'LatoWeb', sans-serif;
+  font-weight: 300;
+  font-style:italic;
+  text-align: center;
+  font-size: 3em;
+}
+
+.screen {
+  position: relative;
+  height: 99vh;
+  padding: 20px;
+}
+
+.clock {
+  text-align: center;
+  margin: 40px auto;
+  background: white;
+  border: none;
+}
+
+#countdown {
+  margin: 0 auto;
+}
+
+.btn {
+    background-color: #c87f69;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.block {
+  margin: 0 auto;
+  margin-top: 200px;
+  text-align: center;
+}
+
+.block div {
+  margin: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 480px) {
+    .text {
+        font-size: 2em;
+    }
+}
+
+a {
+  text-decoration: none;
+  color: #c87f69;
+  border-bottom: 2px dotted #c87f69;
+}
+
+a:hover {
+  border-bottom: 2px solid #c87f69;
+}
+
+a.user {
+  font-family: 'LatoWeb', sans-serif;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 50px;
+  font-size: 1em;
+  color: #ffffff;
+  line-height: 30px;
+  text-align: center;
+  background: #3fc878;
+}
+
+.col {
+  padding-top: 10px;
+  width: 25%;
+  float: left;
+}
+
 h4 {
-  font-size: 12px;
+  font-family: 'LatoWeb', sans-serif;
+  color: #ffffff;
 }
-h5 {
-  font-size: 12px;
-  font-weight: bold;
-}
-.note {
-  font-size: 9px;
-}
-li {
-  margin: 0.2em;
-}
-table.references td {
-  vertical-align: top;
-}
-.skin-switch {
-  font-size: 9px;
-}
-pre {
-  font-weight: bold;
-  color: #333333;
+
+h6 {
+  font-family: 'LatoWeb', sans-serif;
+  color: #ffffff;
 }
