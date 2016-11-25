@@ -60,6 +60,7 @@ countDown.charGapWidth = 0;
 countDown.init();
 var bdd = new Date("12/03/2016 17:00");
 startTime();
+startList();
 
 function updateTime() {
   var timeDiff = bdd.getTime() - new Date().getTime();
@@ -84,6 +85,38 @@ function timeToStirng(time) {
 function startTime() {
   updateTime();
   setTimeout(startTime, 1000);
+}
+
+function updateList() {
+  get('/users', function (data) {
+    if (users != JSON.parse(data)) {
+      users = JSON.parse(data);
+      document.getElementById('col0').innerHTML = '<h4 style="margin-botton: 10px;">Не определились</h4>';
+      document.getElementById('col1').innerHTML = '<h4 style="margin-botton: 10px;">Придут</h4>';
+      document.getElementById('col2').innerHTML = '<h4 style="margin-botton: 10px;">Возможно придут</h4>';
+      document.getElementById('col3').innerHTML = '<h4>Не придут</h4><h6 style="margin-top: -20px; margin-bottom: 7px;">Можете попробовать их уговорить</h6>';
+      Object.keys(users).map(function (key) {
+        var html = '<a class="user" href ="' + users[key].vk + '">' + users[key].name + ' ' + users[key].surname + '</a><br />';
+        if (users[key].status == 0) {
+          document.getElementById('col0').innerHTML += html;
+        } else if (users[key].status == 1) {
+          document.getElementById('col1').innerHTML += html;
+        } else if (users[key].status == 2) {
+          document.getElementById('col2').innerHTML += html;
+        } else if (users[key].status == 3) {
+          document.getElementById('col3').innerHTML += html;
+        } else {
+          console.log("Error: bad user:");
+          console.log(users[key]);
+        }
+      });
+    }
+  }, {uid: uid});
+}
+
+function startList() {
+  updateList();
+  setTimeout(startList, 1000);
 }
 
 function findGetParameter(parameterName) {
