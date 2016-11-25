@@ -74,6 +74,6 @@ app.post('/poll', function (req, res) {
   }
 });
 
-app.listen(1337, function(){
-  console.log('Express server listening on port 1337');
+app.listen(80, function(){
+  console.log('Express server listening on port 80');
 });
