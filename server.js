@@ -74,6 +74,10 @@ app.post('/poll', function (req, res) {
   }
 });
 
+app.get('/wishlist', function (req, res) {
+  res.sendFile(path.join(__dirname, 'html/wishlist.html'));
+});
+
 app.listen(80, function(){
   console.log('Express server listening on port 80');
 });
