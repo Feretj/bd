@@ -88,7 +88,7 @@ function updateList() {
       document.getElementById('col0').innerHTML = '<h4 style="margin-botton: 10px;">Не определились</h4>';
       document.getElementById('col1').innerHTML = '<h4 style="margin-botton: 10px;">Придут</h4>';
       document.getElementById('col2').innerHTML = '<h4 style="margin-botton: 10px;">Возможно придут</h4>';
-      document.getElementById('col3').innerHTML = '<h4>Не придут</h4><h6 style="margin-top: -20px; margin-bottom: 7px;">Можете попробовать их уговорить</h6>';
+      document.getElementById('col3').innerHTML = '<h4 style="margin-botton: 10px;">Не придут</h4>';
       Object.keys(users).map(function (key) {
         var html = '<a class="user" href ="' + users[key].vk + '">' + users[key].name + ' ' + users[key].surname + '</a><br />';
         if (users[key].status == 0) {
