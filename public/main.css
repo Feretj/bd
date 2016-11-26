@@ -194,7 +194,7 @@ h6 {
 
 @keyframes arrow {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-10px);}
+    50% {transform: translateY(-20px);}
 }
 
 .arrow-down {
@@ -205,7 +205,7 @@ h6 {
   border-top: 30px solid #ffffff;
   position: absolute;
   left: 50%;
-  bottom: 60px;
+  bottom: 80px;
   margin-left: -30px;
   animation-name: arrow;
   animation-duration: 1100ms;
