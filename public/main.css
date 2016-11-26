@@ -191,3 +191,24 @@ h6 {
   font-family: 'LatoWeb', sans-serif;
   color: #ffffff;
 }
+
+@keyframes arrow {
+    0%, 100% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #ffffff;
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  margin-left: -30px;
+  animation-name: arrow;
+  animation-duration: 1100ms;
+  animation-delay: 100ms;
+  animation-iteration-count: 3;
+}
