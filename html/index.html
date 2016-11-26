@@ -10,7 +10,7 @@
 <body>
   <div class="screen" style="background: #5cd8e8">
     <div class="text" style="color: #ffffff">
-      <span id="username">Count down</span>, вы приглашены на мой день рождение.
+      <span id="username">Count down</span>, вы приглашены на мой день рождения.
       <br />
       Он состоится 3 Декабря в 17:00.
       <br />
@@ -188,9 +188,9 @@
         <div class="text">
           Пойдешь ли ты?
         </div>
-        <button class="btn option" id="y" type="button">Да!</button>
-        <button class="btn option" id="m" type="button">Возможно</button>
-        <button class="btn option" id="n" type="button">Неа</button>
+        <button class="btn option" id="y" type="button" onclick="poll(event)">Да!</button>
+        <button class="btn option" id="m" type="button" onclick="poll(event)">Возможно</button>
+        <button class="btn option" id="n" type="button" onclick="poll(event)">Неа</button>
       </div>
       <div id="no" class="hidden block">
         <div class="text">
@@ -198,14 +198,14 @@
           Но спасибо, что зашел на сайт и отметился!<br />
           До встречи
         </div>
-        <button class="btn change" type="button" click="change">Изменить решение</button>
+        <button class="btn change" type="button" onclick="change(event)">Изменить решение</button>
       </div>
       <div id="yes" class="hidden block">
         <div class="text">
           Буду ждать!<br />
           <a href="https://telegram.me/joinchat/BcAduAvau81MszE-We8unQ">Вот инвайт для чата в телеграме</a>
         </div>
-        <button class="btn change" type="button">Изменить решение</button>
+        <button class="btn change" type="button" onclick="change(event)">Изменить решение</button>
       </div>
     </div>
     <a href="#listscreen"><div class="arrow-down" style="border-top-color: #c87f69;"></div></a>

@@ -18,12 +18,6 @@ get('/user', function (data) {
     document.getElementById('buttons').classList.add("hidden");
     document.getElementById('yes').classList.remove("hidden");
   }
-  document.querySelectorAll('.option').forEach(function (btn) {
-    btn.onclick = poll;
-  });
-  document.querySelectorAll('.change').forEach(function (btn) {
-    btn.onclick = change;
-  });
 }, {uid: uid});
 
 get('/users', function (data) {
