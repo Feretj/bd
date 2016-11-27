@@ -1,0 +1,77 @@
+@import url(latofonts.css);
+
+body {
+  background-color: #e6e6e6;
+}
+
+.head {
+  width: 98%;
+  background-color: #ffffff;
+  box-shadow: -2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 125px;
+  margin: 30px auto;
+  line-height: 25px;
+  font-size: 15px;
+  font-family: "LatoWeb", sans-serif;
+  color: #868686;
+  font-weight: 600;
+}
+
+.head h1 {
+  line-height: 80px;
+  font-size: 4em;
+  margin: 0;
+}
+
+.links {
+  padding-top: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #868686;
+}
+
+.element {
+  padding: 15px;
+  width: 98%;
+  background-color: #ffffff;
+  box-shadow: -2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+  text-align: Left;
+  margin: 15px auto;
+  font-family: "LatoWeb", sans-serif;
+  color: #555555;
+  box-sizing: border-box;
+}
+
+.name {
+  line-height: 50px;
+  font-size: 30px;
+  font-weight: 400;
+  border-bottom: 2px solid #d5d5d5;
+  margin-bottom: 10px;
+}
+
+.desc {
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.links {
+  margin-top: 10px;
+  border-top: 2px solid #d5d5d5;
+}
+
+@media only screen and (min-width: 600px) {
+  .head, .element {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .head, .element {
+    width: 60%;
+  }
+}
